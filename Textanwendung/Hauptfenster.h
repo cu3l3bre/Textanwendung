@@ -94,6 +94,7 @@ namespace Textanwendung {
 			this->textBox_Ausgabe->Location = System::Drawing::Point(47, 164);
 			this->textBox_Ausgabe->Multiline = true;
 			this->textBox_Ausgabe->Name = L"textBox_Ausgabe";
+			this->textBox_Ausgabe->ReadOnly = true;
 			this->textBox_Ausgabe->ScrollBars = System::Windows::Forms::ScrollBars::Both;
 			this->textBox_Ausgabe->Size = System::Drawing::Size(285, 295);
 			this->textBox_Ausgabe->TabIndex = 2;
