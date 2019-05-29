@@ -277,23 +277,25 @@ namespace Textanwendung {
 
 		}
 #pragma endregion
-	private: System::Void button_TextAnfuegen_Click(System::Object^  sender, System::EventArgs^  e);
 
+		// Deklaration Button Click Methoden
+		private: System::Void button_TextAnfuegen_Click(System::Object^  sender, System::EventArgs^  e);
+		private: System::Void button_ZeichenZaehlen_Click(System::Object^  sender, System::EventArgs^  e);
+		private: System::Void button_AusgabeLoeschen_Click(System::Object^  sender, System::EventArgs^  e);
+		private: System::Void button_TextGross_Click(System::Object^  sender, System::EventArgs^  e);
+		private: System::Void button_TextKlein_Click(System::Object^  sender, System::EventArgs^  e);
+		private: System::Void button_PruefeZeichenkette_Click(System::Object^  sender, System::EventArgs^  e);
+		private: System::Void button_WoerterZaehlen_Click(System::Object^  sender, System::EventArgs^  e);
 
-private: System::Void button_ZeichenZaehlen_Click(System::Object^  sender, System::EventArgs^  e);
-private: System::Void button_AusgabeLoeschen_Click(System::Object^  sender, System::EventArgs^  e);
-private: System::Void button_TextGross_Click(System::Object^  sender, System::EventArgs^  e);
-private: System::Void button_TextKlein_Click(System::Object^  sender, System::EventArgs^  e);
-private: System::Void button_PruefeZeichenkette_Click(System::Object^  sender, System::EventArgs^  e);
-private: System::Void button_WoerterZaehlen_Click(System::Object^  sender, System::EventArgs^  e);
-private: System::Void textBox_PruefeZeichenkette_KeyPress(System::Object^  sender, System::Windows::Forms::KeyPressEventArgs^  e);
-private: System::Void textBox_PruefeZeichenkette_TextChanged(System::Object^  sender, System::EventArgs^  e);
+		 // Deklaration Text Changed Methoden
+		private: System::Void textBox_PruefeZeichenkette_TextChanged(System::Object^  sender, System::EventArgs^  e);
 
+		// Deklaration Key Press Methoden (ist nicht am Button nicht verknüpft!!!)
+		private: System::Void textBox_PruefeZeichenkette_KeyPress(System::Object^  sender, System::Windows::Forms::KeyPressEventArgs^  e);
 
-
-
- private: System::Void zaehleWoerterAusgabe();
- private: System::Void pruefeZeichenkette();
+		// Deklaration Eigene Methoden
+		private: System::Void zaehleWoerterAusgabe();
+		private: System::Void pruefeZeichenkette();
 
 };
 }

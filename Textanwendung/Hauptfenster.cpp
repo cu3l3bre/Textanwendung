@@ -1,5 +1,8 @@
 #include "Hauptfenster.h"
 
+
+// Button Click Methoden------------------------------------------------------------------------
+
 System::Void Textanwendung::Hauptfenster::button_TextAnfuegen_Click(System::Object ^ sender, System::EventArgs ^ e)
 {
 	// Text in der Eingabe lesen
@@ -56,7 +59,6 @@ System::Void Textanwendung::Hauptfenster::button_ZeichenZaehlen_Click(System::Ob
 }
 
 
-
 System::Void Textanwendung::Hauptfenster::button_AusgabeLoeschen_Click(System::Object^  sender, System::EventArgs^  e)
 {
 	textBox_Ausgabe->Text = "";
@@ -68,14 +70,11 @@ System::Void Textanwendung::Hauptfenster::button_AusgabeLoeschen_Click(System::O
 }
 
 
-
 System::Void Textanwendung::Hauptfenster::button_TextGross_Click(System::Object^  sender, System::EventArgs^  e)
 {
-
 	textBox_Ausgabe->Text = textBox_Ausgabe->Text->ToUpper();
 	textBox_Eingabe->Focus();
 }
-
 
 
 System::Void Textanwendung::Hauptfenster::button_TextKlein_Click(System::Object^  sender, System::EventArgs^  e)
@@ -83,6 +82,7 @@ System::Void Textanwendung::Hauptfenster::button_TextKlein_Click(System::Object^
 	textBox_Ausgabe->Text = textBox_Ausgabe->Text->ToLower();
 	textBox_Eingabe->Focus();
 }
+
 
 System::Void Textanwendung::Hauptfenster::button_PruefeZeichenkette_Click(System::Object^  sender, System::EventArgs^  e)
 {
@@ -96,19 +96,21 @@ System::Void Textanwendung::Hauptfenster::button_WoerterZaehlen_Click(System::Ob
 }
 
 
+
+// Text Changed Metoden-------------------------------------------------------------------------
+
 System::Void Textanwendung::Hauptfenster::textBox_PruefeZeichenkette_TextChanged(System::Object^  sender, System::EventArgs^  e)
 {
 	pruefeZeichenkette();
 }
 
 
+// Key Press Metoden (das ist kacke und deswegen nicht am Button verknüpft)---------------------
 
-// das ist kacke ---------------------------------------------
 System::Void Textanwendung::Hauptfenster::textBox_PruefeZeichenkette_KeyPress(System::Object^  sender, System::Windows::Forms::KeyPressEventArgs^  e)
 {
 	if (textBox_PruefeZeichenkette->Text != "")
 	{
-
 		if (textBox_Ausgabe->Text->Contains(textBox_PruefeZeichenkette->Text))
 		{
 			textBox_PruefeZeichenkette->BackColor = Color::LimeGreen;
@@ -124,10 +126,10 @@ System::Void Textanwendung::Hauptfenster::textBox_PruefeZeichenkette_KeyPress(Sy
 	}
 
 }
-//------------------------------------------------------------
+//----------------------------------------------------------------------------------------------
 
 
-// Eigene Methoden
+// Eigene Methoden------------------------------------------------------------------------------
 
 System::Void Textanwendung::Hauptfenster::zaehleWoerterAusgabe()
 {
