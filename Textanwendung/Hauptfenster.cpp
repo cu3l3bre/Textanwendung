@@ -12,9 +12,19 @@ System::Void Textanwendung::Hauptfenster::button_TextAnfuegen_Click(System::Obje
 	if (textBox_Eingabe->Text != "")
 	{
 		textBox_Ausgabe->Text += "- " + textBox_Eingabe->Text;
-		textBox_Ausgabe->Text += "\r\n";
+		
+		// so für zeilenumbruch
+		//textBox_Ausgabe->Text += "\r\n";
+
+		// oder das
+		textBox_Ausgabe->Text += Environment::NewLine;
+		
 		textBox_Eingabe->Text = "";
 		label_ZeichenZaehlen->Text = "0";
+		label_AusgabeZeichenZaehlen->Text = textBox_Ausgabe->TextLength.ToString();
+
+		zaehleWoerterAusgabe();
+		pruefeZeichenkette();
 	}
 	else
 	{
@@ -31,7 +41,7 @@ System::Void Textanwendung::Hauptfenster::button_ZeichenZaehlen_Click(System::Ob
 
 	// oder als einzeiler
 	//label_ZeichenZaehlen->Text = (textBox_Eingabe->TextLength).ToString();
-	
+
 	// geht auch so
 	label_ZeichenZaehlen->Text = textBox_Eingabe->TextLength.ToString();
 
@@ -43,4 +53,121 @@ System::Void Textanwendung::Hauptfenster::button_ZeichenZaehlen_Click(System::Ob
 	// also von int nach int32, die hat die Methode
 	//Int32^ test = 6;
 	// test->ToString();
+}
+
+
+
+System::Void Textanwendung::Hauptfenster::button_AusgabeLoeschen_Click(System::Object^  sender, System::EventArgs^  e)
+{
+	textBox_Ausgabe->Text = "";
+	label_AusgabeZeichenZaehlen->Text = "0";
+	label_WoerterZaehlen->Text = "0";
+	textBox_PruefeZeichenkette->BackColor = Color::White;
+	textBox_PruefeZeichenkette->Text = "";
+	textBox_Eingabe->Focus();
+}
+
+
+
+System::Void Textanwendung::Hauptfenster::button_TextGross_Click(System::Object^  sender, System::EventArgs^  e)
+{
+
+	textBox_Ausgabe->Text = textBox_Ausgabe->Text->ToUpper();
+	textBox_Eingabe->Focus();
+}
+
+
+
+System::Void Textanwendung::Hauptfenster::button_TextKlein_Click(System::Object^  sender, System::EventArgs^  e)
+{
+	textBox_Ausgabe->Text = textBox_Ausgabe->Text->ToLower();
+	textBox_Eingabe->Focus();
+}
+
+System::Void Textanwendung::Hauptfenster::button_PruefeZeichenkette_Click(System::Object^  sender, System::EventArgs^  e)
+{
+	pruefeZeichenkette();
+}
+
+
+System::Void Textanwendung::Hauptfenster::button_WoerterZaehlen_Click(System::Object^  sender, System::EventArgs^  e)
+{
+	zaehleWoerterAusgabe();
+}
+
+
+System::Void Textanwendung::Hauptfenster::textBox_PruefeZeichenkette_TextChanged(System::Object^  sender, System::EventArgs^  e)
+{
+	pruefeZeichenkette();
+}
+
+
+
+// das ist kacke ---------------------------------------------
+System::Void Textanwendung::Hauptfenster::textBox_PruefeZeichenkette_KeyPress(System::Object^  sender, System::Windows::Forms::KeyPressEventArgs^  e)
+{
+	if (textBox_PruefeZeichenkette->Text != "")
+	{
+
+		if (textBox_Ausgabe->Text->Contains(textBox_PruefeZeichenkette->Text))
+		{
+			textBox_PruefeZeichenkette->BackColor = Color::LimeGreen;
+		}
+		else
+		{
+			textBox_PruefeZeichenkette->BackColor = Color::Red;
+		}
+	}
+	else
+	{
+		textBox_PruefeZeichenkette->BackColor = Color::White;
+	}
+
+}
+//------------------------------------------------------------
+
+
+// Eigene Methoden
+
+System::Void Textanwendung::Hauptfenster::zaehleWoerterAusgabe()
+{
+	if (textBox_Ausgabe->Text != "")
+	{
+		array<String^>^ anzahlWoerterArray = textBox_Ausgabe->Text->Split('-', ',', ' ');
+
+		int anzahlWoerter = 0;
+
+		for (int i = 0; i < anzahlWoerterArray->Length; i++)
+		{
+			if (anzahlWoerterArray[i] != "")
+			{
+				anzahlWoerter++;
+			}
+		}
+		label_WoerterZaehlen->Text = anzahlWoerter.ToString();
+	}
+	else
+	{
+		label_WoerterZaehlen->Text = "0";
+	}
+}
+
+
+System::Void Textanwendung::Hauptfenster::pruefeZeichenkette()
+{
+	if (textBox_PruefeZeichenkette->Text != "")
+	{
+		if (textBox_Ausgabe->Text->Contains(textBox_PruefeZeichenkette->Text))
+		{
+			textBox_PruefeZeichenkette->BackColor = Color::LimeGreen;
+		}
+		else
+		{
+			textBox_PruefeZeichenkette->BackColor = Color::Red;
+		}
+	}
+	else
+	{
+		textBox_PruefeZeichenkette->BackColor = Color::White;
+	}
 }
