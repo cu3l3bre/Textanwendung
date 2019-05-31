@@ -24,10 +24,17 @@ System::Void Textanwendung::Hauptfenster::button_TextAnfuegen_Click(System::Obje
 		
 		textBox_Eingabe->Text = "";
 		label_ZeichenZaehlen->Text = "0";
+
 		label_AusgabeZeichenZaehlen->Text = textBox_Ausgabe->TextLength.ToString();
 
 		zaehleWoerterAusgabe();
-		pruefeZeichenkette();
+
+		
+		//pruefeZeichenkette();
+		// jetzt als simulierter click, sodass der Button qausi vom Programm selbst gedrückt wird
+		button_PruefeZeichenkette->PerformClick();
+
+
 	}
 	else
 	{
@@ -62,6 +69,9 @@ System::Void Textanwendung::Hauptfenster::button_ZeichenZaehlen_Click(System::Ob
 System::Void Textanwendung::Hauptfenster::button_AusgabeLoeschen_Click(System::Object^  sender, System::EventArgs^  e)
 {
 	textBox_Ausgabe->Text = "";
+	//textBox_Ausgabe->Text = String::Empty;
+	//textBox_Ausgabe->Clear();
+
 	label_AusgabeZeichenZaehlen->Text = "0";
 	label_WoerterZaehlen->Text = "0";
 	textBox_PruefeZeichenkette->BackColor = Color::White;
@@ -136,6 +146,8 @@ System::Void Textanwendung::Hauptfenster::zaehleWoerterAusgabe()
 	if (textBox_Ausgabe->Text != "")
 	{
 		array<String^>^ anzahlWoerterArray = textBox_Ausgabe->Text->Split('-', ',', ' ');
+		// es gibt zu split auch eine option, die leere einträge entfernt, dann bräcuhte ich keine
+		// for schleife :P -> StringSplitOptions.RemoveEmptyEntries
 
 		int anzahlWoerter = 0;
 
